@@ -153,6 +153,8 @@ def minimax(board):
             return (0, 1)
         v = float('-inf')
         for action in actions(board):
+            if terminal(result(board, action)):
+                return action
             n = minValue(result(board, action), v)
             if n > v:
                 v = n
@@ -162,6 +164,8 @@ def minimax(board):
     elif player(board) == O:
         v = float('inf')
         for action in actions(board):
+            if terminal(result(board, action)):
+                return action
             m = maxValue(result(board, action), v)
             if m < v:
                 v = m
